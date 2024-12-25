@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo index.html</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header"></header>
+
+    <main>
+        <h1>Bem-vindo à página inicial!</h1>
+        <p>Este é o conteúdo principal.</p>
+    </main>
+    
+    <footer id="footer">
+        <p>&copy; 2024 Minha Empresa. Todos os direitos reservados.</p>
+    </footer>
+
+
+
+    <script>
+        // Função para carregar conteúdo de um arquivo HTML
+        function loadComponent(selector, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Erro ao carregar ${file}`);
+                    return response.text();
+                })
+                .then(html => document.querySelector(selector).innerHTML = html)
+                .catch(error => console.error(error));
+        }
+
+        // Carregar o header e o footer
+        loadComponent('#header', 'header.html');
+        loadComponent('#footer', 'footer.html');
+    </script>
+    
+</body>
+</html>

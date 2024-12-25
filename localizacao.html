@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo Localização</title>
+</head>
+<body>
+    <div id="header"></div>
+
+    <div id="footer"></div>
+
+
+    <script>
+        // Função para carregar conteúdo de um arquivo HTML
+        function loadComponent(selector, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Erro ao carregar ${file}`);
+                    return response.text();
+                })
+                .then(html => document.querySelector(selector).innerHTML = html)
+                .catch(error => console.error(error));
+        }
+
+        // Carregar o header e o footer
+        loadComponent('#header', 'header.html');
+        loadComponent('#footer', 'footer.html');
+    </script>
+</body>
+</html>
